@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ProductService from "../services/productService";
 import { Icon, Label, Menu, Table } from "semantic-ui-react";
-
+import {Link, NavLink} from "react-router-dom"
 export default function ProductList() {
   const [products, setProducts] = useState([]);
 
@@ -11,7 +11,7 @@ export default function ProductList() {
     productService
       .getProducts()
       .then((result) => setProducts(result.data.data));
-  });
+  }, []);
 
   return (
     <div>
@@ -27,9 +27,9 @@ export default function ProductList() {
         </Table.Header>
 
         <Table.Body>
-          {products.map((product, id) => (
-            <Table.Row key={id}>
-              <Table.Cell>{product.productName}</Table.Cell>
+          {products.map((product) => (
+            <Table.Row key={product.id}>
+              <Table.Cell as={NavLink} to={`/products/${product.id}`} >{product.productName}</Table.Cell>
               <Table.Cell>{product.unitPrice}</Table.Cell>
               <Table.Cell>{product.unitsInStock}</Table.Cell>
               <Table.Cell>{product.quantityPerUnit}</Table.Cell>
