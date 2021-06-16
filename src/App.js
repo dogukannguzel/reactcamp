@@ -1,5 +1,6 @@
 import "./App.css";
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
+import "react-toastify/dist/ReactToastify.min.css";
 import Dashboard from "./layouts/Dashboard";
 import { Container } from "semantic-ui-react";
 import Navi from "./layouts/Navi";
